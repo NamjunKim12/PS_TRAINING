@@ -17,6 +17,61 @@
 //이진 탐색 트리는 탐색에 있어서 O(logN)의 시간 복잡도를 가진다.
 //이진 탐색 트리는 이진 탐색 알고리즘을 구현하기 위해 만들어졌다.
 
+class Node { 
+    constructor(value) { 
+        this.value = value; 
+        this.left = null; 
+        this.right = null; 
+    } 
+}
+
+class BinarySearchTree {
+    constructor() {
+        this.root = null;
+    }
+    insert(value){
+        const newNode = new Node(value);
+        if(this.root === null){
+            this.root = newNode;
+        } else {
+            let currentNode = this.root;
+            while(true){
+                if(value < currentNode.value){
+                    //Left
+                    if(!currentNode.left){
+                        currentNode.left = newNode;
+                        return this;
+                    }
+                    currentNode = currentNode.left;
+                } else {
+                    //Right
+                    if(!currentNode.right){
+                        currentNode.right = newNode;
+                        return this;
+                    }
+                    currentNode = currentNode.right;
+                }
+            }
+        }
+    }
+    find(value){
+        if(this.root === null) return false;
+        let currentNode = this.root;
+        let found = false;
+        while(currentNode && !found){
+            if(value < currentNode.value){
+                currentNode = currentNode.left;
+            } else if(value > currentNode.value){
+                currentNode = currentNode.right;
+            } else {
+                found = true;
+            }
+        }
+        if(!found) return undefined;
+        return currentNode;
+    }
+}
+
 //AVL 트리
 //AVL 트리는 이진 탐색 트리의 일종이다.
 //AVL 트리는 왼쪽 자식 노드의 키 값이 부모 노드의 키 값보다 작고, 오른쪽 자식 노드의 키 값이 부모 노드의 키 값보다 크다.
@@ -24,11 +79,3 @@
 //AVL 트리는 탐색에 있어서 O(logN)의 시간 복잡도를 가진다.
 //AVL 트리는 이진 탐색 트리의 높이가 너무 커지지 않도록 균형을 맞춰주기 위해 만들어졌다.
 
-//힙
-//힙은 이진 트리의 일종이다.
-//힙은 완전 이진 트리이다.
-//힙은 최대 힙과 최소 힙이 있다.
-//최대 힙은 부모 노드의 키 값이 자식 노드의 키 값보다 크거나 같다.
-//최소 힙은 부모 노드의 키 값이 자식 노드의 키 값보다 작거나 같다.
-//힙은 탐색에 있어서 O(logN)의 시간 복잡도를 가진다.
-//힙은 우선순위 큐를 구현하기 위해 만들어졌다.
