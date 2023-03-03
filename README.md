@@ -1,2 +1,5 @@
-# Beakjoon-solved
-백준 문제풀이 레포
+# PS_TRAINING
+알고리즘 PS 레포
+
+- 프로그래머스, BOJ의 알고리즘 문제풀이 레포지토리
+- 주 사용언어 : 파이썬, JS 
