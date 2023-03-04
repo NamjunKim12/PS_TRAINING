@@ -1,18 +1,5 @@
 from collections import deque 
 
-N, M, V = map(int,input().split())
-graph = []
-
-for _ in range(M):
-    a = list(map(int, input().split()))
-    a.sort()
-    graph.append(a)
-	
-visited1 = [False] * (N+1)
-visited2 = [False] * (N+1)
-
-print(graph)
-
 def dfs(graph, v, visited):
     visited[v] = True
     print(v, end=' ')
@@ -34,6 +21,18 @@ def bfs(graph, start, visited):
                 queue.append(i)
                 visited[i]=True
 
-dfs(graph, V-1, visited1)
+N, M, V = map(int,input().split())
+graph = [[] * (N + 1) for _ in range(N + 1)]
+
+for _ in range(M):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+    graph[a].sort()
+    graph[b].sort()
+
+visited = [False] * (N+1)
+dfs(graph, V, visited)
 print()
-bfs(graph, V-1, visited2)
+visited = [False] * (N+1)
+bfs(graph, V, visited)
