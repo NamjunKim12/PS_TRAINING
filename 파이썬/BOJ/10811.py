@@ -1,15 +1,10 @@
-N, M = map(int, input().split())
+n, m = map(int, input().split())
 
-arr = []
+tmp=[i+1 for i in range(n)]
 
-for _ in range(M):
-    I,J,K = map(int, input().split())
-    arr.append([I,J,K])
+for _ in range(m):
+    a,b=map(int,input().split())
+    tmp[a-1:b]=tmp[a-1:b][::-1]
 
-answer = [0 for i in range(N)];
-for item in arr:
-    for i in range(item[0],item[1]+1):
-        answer[i-1] = item[2]
+print(*tmp)
 
-for i in answer :
-    print(i, end =' ')
