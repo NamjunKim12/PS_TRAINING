@@ -1,21 +1,17 @@
 N, M = map(int, input().split())
-arr = []
+tree = list(map(int, input().split()))
 
-for i in range(N):
-    a = int(input())
-    arr.append(a)
-
-start, end = 1, max(arr) 
+start, end = 1, max(tree) 
 
 while start <= end : 
     mid = (start+end) // 2
 
-    cable = 0
-    for i in arr:
+    log = 0
+    for i in tree:
         if i >= mid:
-            cable += i // mid
+            log += i - mid
 
-    if cable >= M:
+    if log >= M:
         start = mid + 1
     else:
         end = mid - 1
