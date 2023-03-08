@@ -1,9 +1,8 @@
-N, M = map(int, input().split())
+K, N = map(int, input().split())
 arr = []
 
-for i in range(N):
-    a = int(input())
-    arr.append(a)
+for i in range(K):
+    arr.append(int(input()))
 
 start, end = 1, max(arr) 
 
@@ -15,7 +14,7 @@ while start <= end :
         if i >= mid:
             cable += i // mid
 
-    if cable >= M:
+    if cable >= N:
         start = mid + 1
     else:
         end = mid - 1
